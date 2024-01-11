@@ -141,6 +141,33 @@ class LinkedList {
 
         return getIndex(this['HEAD'], value, 0);
     }
+
+    toString () {
+        const string = function (head) {
+            let resultString;
+            let current = head
+
+            if (head === undefined) return 'null';
+
+            while (current !== null) {
+                if (resultString === undefined) {
+                    resultString = `(${current.value})`;
+
+                } else {
+                    resultString = `${resultString} -> (${current.value})`;
+                }
+
+                current = current.nextNode;
+            }
+
+            resultString = `${resultString} -> null`;
+
+            return resultString
+        }
+
+        return string(this['HEAD']);
+
+    }
 }
 
 const newList = new LinkedList();
@@ -148,10 +175,10 @@ newList.append('A');
 newList.append('B');
 newList.append('C');
 newList.prepend('S');
+newList.prepend('X');
 
 console.log(newList);
-console.log(newList.contains('F'));
-console.log(newList.find('F'));
+console.log(newList.toString());
 
 
 
